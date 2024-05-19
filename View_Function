@@ -1,0 +1,38 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.18;
+
+contract AppleInventory {
+    address public owner;
+    uint256 public totalApples = 300; // initial apple inventory
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    function restock(uint256 _quantity) public payable {
+        require(_quantity > 50, "restock should be greater than 50");
+        totalApples += _quantity;
+    }
+
+    function soldApple(uint256 _quantity) public {
+        require(_quantity > 20, "sold quantity should be greater than 20");
+        require(_quantity <= totalApples, "Not enough apples in inventory");
+
+        totalApples -= _quantity;
+    }
+
+    function TotalAppleInBasket (uint256 newTotal) public {
+        require(msg.sender == owner, "Only the contract owner can update the total apples");
+        totalApples = newTotal;
+    }
+
+    // View function to get the total number of apples
+    function getTotalApples() public view returns (uint256) {
+        return totalApples;
+    }
+
+    // View function to get the owner of the contract
+    function getOwner() public view returns (address) {
+        return owner;
+    }
+}
