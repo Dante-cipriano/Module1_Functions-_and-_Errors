@@ -46,6 +46,8 @@ Call functions `getTotalApples` and `getOwner` to retrieve information from the 
 Manage Ether transactions carefully when using contract functions.
 Ensure proper access control, especially for critical functions like updating the total apples in inventory.
 
+# Author  
+Cipriano Jr. Dante R.
 
 # License:
 This smart contract is licensed under the MIT License.
